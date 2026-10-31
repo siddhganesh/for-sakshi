@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const petals = [];
     const PETAL_SYMBOLS = ['✦', '·', '✧', '⋆', '*'];
-    const PETAL_COLORS  = ['rgba(107,140,255,0.35)', 'rgba(160,107,255,0.3)', 'rgba(255,123,168,0.25)', 'rgba(184,212,255,0.2)'];
+    const PETAL_COLORS  = ['rgba(231,84,128,0.3)', 'rgba(255,182,193,0.4)', 'rgba(244,130,158,0.25)', 'rgba(255,105,135,0.2)', 'rgba(255,220,230,0.35)'];
 
     function spawnPetal() {
         petals.push({
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const h = document.createElement('div');
                 h.className = 'float-heart';
-                h.textContent = ['💙','💜','🩵','✨','🌸'][Math.floor(Math.random()*5)];
+                h.textContent = ['💗','🌸','💕','🩷','✿','🌷'][Math.floor(Math.random()*6)];
                 h.style.left = `${20 + Math.random() * 60}%`;
                 h.style.bottom = `${10 + Math.random() * 30}%`;
                 h.style.animationDuration = `${2 + Math.random()}s`;
