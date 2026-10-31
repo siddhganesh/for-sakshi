@@ -1,0 +1,718 @@
+/* ============================================================
+   SAKSHI KE LIYE — Full CSS
+   Mood: Raat, Maafi, Pyaar, Warmth
+   ============================================================ */
+
+/* --- Variables --- */
+:root {
+    --night-bg:       #0D0D1A;
+    --night-mid:      #141428;
+    --night-card:     #1A1A32;
+    --night-border:   #2A2A4A;
+
+    --glow-blue:      #6B8CFF;
+    --glow-purple:    #A06BFF;
+    --glow-rose:      #FF7BA8;
+    --glow-gold:      #FFD580;
+    --glow-soft:      #B8D4FF;
+
+    --text-main:      #EEE8FF;
+    --text-muted:     #8888AA;
+    --text-bright:    #FFFFFF;
+
+    --font-serif:     'Playfair Display', Georgia, serif;
+    --font-body:      'Hind', sans-serif;
+    --font-hand:      'Caveat', cursive;
+
+    --radius-sm:  10px;
+    --radius-md:  18px;
+    --radius-lg:  28px;
+    --transition: 0.35s ease;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--night-bg);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- Stars Background --- */
+.stars-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle var(--tw-dur, 3s) ease-in-out var(--tw-delay, 0s) infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: 0.1; transform: scale(0.8); }
+    to   { opacity: 0.9; transform: scale(1.2); }
+}
+
+/* Petal canvas */
+#petalCanvas {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* --- PAGES --- */
+.page {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 20px;
+    overflow-y: auto;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.page.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(30px);
+}
+
+.page.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+.page-inner {
+    width: 100%;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding-bottom: 40px;
+}
+
+/* ============================================================
+   PAGE 1 — LOCK SCREEN
+   ============================================================ */
+.page-lock {
+    background: radial-gradient(ellipse at 50% 40%, #1a1035 0%, #0D0D1A 70%);
+}
+
+.lock-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+    animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.moon-icon {
+    font-size: 4rem;
+    animation: moonFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 220, 130, 0.5));
+}
+
+@keyframes moonFloat {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50%       { transform: translateY(-14px) rotate(5deg); }
+}
+
+.lock-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 8vw, 4rem);
+    font-style: italic;
+    color: var(--text-bright);
+    text-shadow: 0 0 40px rgba(167, 130, 255, 0.5);
+    letter-spacing: 0.02em;
+}
+
+.lock-sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 300px;
+}
+
+.open-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #6B3FA0 0%, #3A5FC8 100%);
+    color: white;
+    border: none;
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-family: var(--font-hand);
+    font-size: 1.45rem;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(107, 140, 255, 0.35);
+    transition: var(--transition);
+    margin-top: 8px;
+}
+
+.open-btn:hover, .open-btn:active {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 14px 40px rgba(107, 140, 255, 0.5);
+}
+
+.open-btn-icon { font-size: 1.6rem; }
+
+.lock-hint {
+    font-size: 0.82rem;
+    color: #555577;
+    font-style: italic;
+    letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   PAGE 2 — SORRY LETTER
+   ============================================================ */
+.page-sorry {
+    background: linear-gradient(160deg, #1a1230 0%, #0D0D1A 100%);
+    align-items: flex-start;
+    padding-top: 60px;
+}
+
+.sorry-envelope {
+    position: relative;
+    width: 100%;
+}
+
+.letter-card {
+    background: #1C1830;
+    border: 1px solid var(--night-border);
+    border-radius: var(--radius-md);
+    padding: 32px 28px 24px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 0 60px rgba(107, 60, 160, 0.05);
+    overflow: hidden;
+}
+
+.letter-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--glow-purple), var(--glow-rose), var(--glow-blue));
+}
+
+.letter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.letter-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+    letter-spacing: 0.05em;
+}
+
+.letter-deco { font-size: 1.4rem; }
+
+.letter-salutation {
+    font-family: var(--font-hand);
+    font-size: 2rem;
+    color: var(--glow-rose);
+    margin-bottom: 16px;
+}
+
+.letter-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.letter-body p {
+    font-size: 1.02rem;
+    color: #C8C0E0;
+    line-height: 1.75;
+}
+
+.letter-body strong {
+    color: var(--text-bright);
+    font-weight: 500;
+}
+
+.letter-highlight {
+    background: rgba(107, 60, 160, 0.2);
+    border-left: 3px solid var(--glow-purple);
+    padding: 12px 16px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-style: italic;
+    color: var(--glow-soft) !important;
+}
+
+.scroll-cue {
+    text-align: center;
+    margin-top: 22px;
+    animation: bounce 2s ease infinite;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(6px); }
+}
+
+/* ============================================================
+   PAGE 3 — SHAYRI CAROUSEL
+   ============================================================ */
+.page-shayri {
+    background: linear-gradient(145deg, #120E28 0%, #0D0D1A 60%, #160E20 100%);
+    align-items: flex-start;
+    padding-top: 50px;
+}
+
+.shayri-inner {
+    gap: 20px;
+}
+
+.shayri-intro {
+    font-family: var(--font-hand);
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.shayri-carousel {
+    position: relative;
+    width: 100%;
+    min-height: 260px;
+    display: grid;
+    place-items: center;
+}
+
+.shayri-card {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 24px;
+    background: var(--night-card);
+    border: 1px solid var(--night-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+    pointer-events: none;
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.shayri-card.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: all;
+}
+
+.shayri-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 0 12px rgba(107, 140, 255, 0.4));
+}
+
+.shayri-card blockquote {
+    font-family: var(--font-hand);
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    color: var(--text-main);
+    line-height: 1.7;
+    font-style: normal;
+}
+
+.shayri-card blockquote em {
+    display: block;
+    margin-top: 8px;
+    color: var(--glow-rose);
+    font-style: italic;
+    font-size: 1.05em;
+}
+
+.shayri-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--night-border);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.dot.active {
+    background: var(--glow-purple);
+    transform: scale(1.3);
+    box-shadow: 0 0 8px var(--glow-purple);
+}
+
+.shayri-nav {
+    display: flex;
+    gap: 16px;
+}
+
+.nav-arrow {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--night-border);
+    background: var(--night-card);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.nav-arrow:hover {
+    background: var(--night-border);
+    color: var(--text-bright);
+    transform: scale(1.08);
+}
+
+/* ============================================================
+   PAGE 4 — PROMISE JAR
+   ============================================================ */
+.page-promise {
+    background: linear-gradient(160deg, #0f0f22 0%, #1a1035 50%, #0D0D1A 100%);
+    align-items: flex-start;
+    padding-top: 50px;
+}
+
+.promise-title {
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    text-align: center;
+    color: var(--text-bright);
+    font-style: italic;
+}
+
+.serif { font-family: var(--font-serif); }
+
+.promise-sub {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.jar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.jar {
+    position: relative;
+    width: 180px;
+}
+
+.jar-lid {
+    font-size: 2.5rem;
+    text-align: center;
+    filter: drop-shadow(0 0 10px rgba(255, 213, 128, 0.5));
+    animation: lidFloat 3s ease-in-out infinite;
+}
+
+@keyframes lidFloat {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+}
+
+.jar-body {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 2px solid rgba(255,255,255,0.12);
+    border-top: none;
+    border-radius: 0 0 60px 60px;
+    min-height: 180px;
+    padding: 16px 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.jar-note {
+    background: linear-gradient(135deg, #2A1E5A, #1A2A5A);
+    border: 1px solid rgba(107, 140, 255, 0.3);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-family: var(--font-hand);
+    font-size: 0.85rem;
+    color: var(--glow-soft);
+    cursor: pointer;
+    transition: var(--transition);
+    animation: noteIn 0.4s ease backwards;
+    max-width: 120px;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.jar-note:hover {
+    background: rgba(107, 140, 255, 0.2);
+    transform: scale(1.08) rotate(-1deg);
+    box-shadow: 0 4px 14px rgba(107, 140, 255, 0.3);
+}
+
+@keyframes noteIn {
+    from { opacity: 0; transform: scale(0.6) rotate(-10deg); }
+    to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.jar-hint {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    font-style: italic;
+}
+
+.promise-detail {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.promise-detail-card {
+    background: var(--night-card);
+    border: 1px solid var(--glow-purple);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 0 60px rgba(160, 107, 255, 0.25);
+    animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+    from { opacity:0; transform: scale(0.8); }
+    to   { opacity:1; transform: scale(1); }
+}
+
+#promiseDetailText {
+    font-family: var(--font-hand);
+    font-size: 1.4rem;
+    color: var(--text-main);
+    line-height: 1.65;
+    margin-bottom: 24px;
+}
+
+.close-detail {
+    background: none;
+    border: 1px solid var(--night-border);
+    color: var(--text-muted);
+    padding: 8px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.close-detail:hover { color: var(--text-bright); border-color: var(--glow-blue); }
+
+/* ============================================================
+   PAGE 5 — FINAL MESSAGE
+   ============================================================ */
+.page-final {
+    background: radial-gradient(ellipse at 50% 30%, #1a1050 0%, #0D0D1A 70%);
+}
+
+.final-inner {
+    text-align: center;
+    gap: 18px;
+}
+
+.final-moon {
+    font-size: 4rem;
+    animation: moonFloat 5s ease-in-out infinite;
+    filter: drop-shadow(0 0 24px rgba(255, 213, 128, 0.5));
+}
+
+.final-title {
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    font-style: italic;
+    color: var(--text-bright);
+    text-shadow: 0 0 40px rgba(167, 130, 255, 0.4);
+}
+
+.final-words {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.fw {
+    font-family: var(--font-hand);
+    font-size: 1.28rem;
+    color: var(--text-main);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    line-height: 1.6;
+}
+
+.fw.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fw-special {
+    font-size: 1.5rem !important;
+    color: var(--glow-rose) !important;
+    font-weight: 600;
+}
+
+.final-question {
+    font-family: var(--font-hand);
+    font-size: 1.35rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.final-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.yes-final-btn {
+    background: linear-gradient(135deg, #3A5FC8, #6B3FA0);
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-family: var(--font-hand);
+    font-size: 1.35rem;
+    cursor: pointer;
+    box-shadow: 0 8px 28px rgba(107, 140, 255, 0.3);
+    transition: var(--transition);
+}
+
+.yes-final-btn:hover {
+    transform: scale(1.06) translateY(-2px);
+    box-shadow: 0 14px 36px rgba(107, 140, 255, 0.5);
+}
+
+.time-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--night-border);
+    padding: 14px 24px;
+    border-radius: 50px;
+    font-family: var(--font-hand);
+    font-size: 1.15rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.time-btn:hover { color: var(--text-main); border-color: var(--text-muted); }
+
+.response-msg {
+    margin-top: 12px;
+    font-family: var(--font-hand);
+    font-size: 1.5rem;
+    color: var(--glow-rose);
+    text-align: center;
+    animation: fadeUp 0.6s ease forwards;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   SHARED — NEXT BUTTON
+   ============================================================ */
+.next-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-muted);
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-family: var(--font-hand);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 8px;
+    animation: breathe 2.5s ease-in-out infinite;
+}
+
+.next-btn:hover {
+    color: var(--text-bright);
+    border-color: var(--glow-blue);
+    background: rgba(107, 140, 255, 0.1);
+    transform: scale(1.04);
+    animation: none;
+}
+
+@keyframes breathe {
+    0%, 100% { box-shadow: 0 0 0px rgba(107, 140, 255, 0); }
+    50%       { box-shadow: 0 0 18px rgba(107, 140, 255, 0.25); }
+}
+
+.hidden { display: none !important; }
+
+/* ============================================================
+   FLOATING HEARTS (confetti replacement)
+   ============================================================ */
+.float-heart {
+    position: fixed;
+    font-size: 1.4rem;
+    pointer-events: none;
+    z-index: 999;
+    animation: floatUp 3s ease forwards;
+}
+
+@keyframes floatUp {
+    0%   { opacity: 0.9; transform: translateY(0) scale(1) rotate(0deg); }
+    100% { opacity: 0;   transform: translateY(-120px) scale(0.5) rotate(20deg); }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 480px) {
+    .letter-card { padding: 24px 18px; }
+    .shayri-card { padding: 24px 18px; }
+    .promises-card { padding: 24px 16px; }
+}

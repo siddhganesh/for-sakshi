@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sakshi ke liye — Dil se</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Hind:wght@300;400;500&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Floating stars background -->
+    <div class="stars-bg" id="starsBg"></div>
+    <!-- Canvas for falling petals -->
+    <canvas id="petalCanvas"></canvas>
+
+    <!-- =============================================
+         PAGE 1 — LOCK SCREEN (Dil ka darwaza)
+    ============================================== -->
+    <section id="lockScreen" class="page page-lock active">
+        <div class="lock-content">
+            <div class="moon-icon">🌙</div>
+            <h1 class="lock-title">Sakshi...</h1>
+            <p class="lock-sub">Ek baat sunni hai tumse.<br/>Please ek baar andar aao.</p>
+            <button class="open-btn" id="openBtn">
+                <span class="open-btn-icon">💌</span>
+                <span>Sunna chahti ho?</span>
+            </button>
+            <p class="lock-hint">( sirf tumhare liye banaya hai )</p>
+        </div>
+    </section>
+
+    <!-- =============================================
+         PAGE 2 — SORRY LETTER (Hand-written feel)
+    ============================================== -->
+    <section id="sorryPage" class="page page-sorry hidden">
+        <div class="page-inner">
+
+            <div class="sorry-envelope" id="sorryEnvelope">
+                <div class="envelope-top"></div>
+                <div class="letter-card" id="letterCard">
+                    <div class="letter-header">
+                        <span class="letter-date">31 October, 2026</span>
+                        <div class="letter-deco">🍂</div>
+                    </div>
+
+                    <p class="letter-salutation">Meri Sakshi,</p>
+
+                    <div class="letter-body">
+                        <p>Raat wali baat ke liye... <strong>main sach mein bahut sharminda hoon.</strong></p>
+                        <p>Maine jo kaha woh galat tha — tumse zyada expect karna, tumhare upar pressure daalna, aur phir "chala jaata hoon" kehna — yeh sab mujhe nahi kehna chahiye tha.</p>
+                        <p>Tum mujhe itna matter karti ho ki kabhi kabhi mujhe lagta hai agar tumne "haan" nahi kaha toh main toot jaaunga. Par is darne mein main tumhare saath galat tha.</p>
+                        <p class="letter-highlight">Tumhari friendship meri sabse badi nemat hai. Aur kal raat main use hi risk mein daal raha tha.</p>
+                        <p>Maafi maangna kaafi nahi hoga, jaanta hoon. Par dil se ek aakhri baar sunna chahta tha tumhe.</p>
+                    </div>
+
+                    <div class="scroll-cue" id="scrollCue">
+                        <span>Aur bhi hai... ⬇</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="next-btn hidden" id="toShayriBtn">
+                <span>Dil ki baat sunoge? 🎋</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- =============================================
+         PAGE 3 — SHAYRI CAROUSEL
+    ============================================== -->
+    <section id="shayriPage" class="page page-shayri hidden">
+        <div class="page-inner shayri-inner">
+
+            <p class="shayri-intro">Kuch alfaaz jo kehna chahta tha...</p>
+
+            <div class="shayri-carousel" id="shayriCarousel">
+
+                <div class="shayri-card active" data-index="0">
+                    <div class="shayri-icon">🌒</div>
+                    <blockquote>
+                        Naraaz rehna tumhara haq hai,<br/>
+                        par kho dena gawara nahi.<br/>
+                        Galti meri thi, maafi tumse maangta hoon —<br/>
+                        <em>is dil ka kya karoon jo tumse hi darta hai.</em>
+                    </blockquote>
+                </div>
+
+                <div class="shayri-card" data-index="1">
+                    <div class="shayri-icon">🍂</div>
+                    <blockquote>
+                        Raaton ko jo akela lagta hai,<br/>
+                        sochta hoon kaash tum paas hoti.<br/>
+                        Maine galti ki, haan —<br/>
+                        <em>par yeh khwaish galat toh nahi thi.</em>
+                    </blockquote>
+                </div>
+
+                <div class="shayri-card" data-index="2">
+                    <div class="shayri-icon">🕯️</div>
+                    <blockquote>
+                        Tumse ladna bhi dard deta hai,<br/>
+                        aur door rehna bhi.<br/>
+                        Is bewajah ki zid mein —<br/>
+                        <em>sirf mujhe hi taqleef mili hai.</em>
+                    </blockquote>
+                </div>
+
+                <div class="shayri-card" data-index="3">
+                    <div class="shayri-icon">🌸</div>
+                    <blockquote>
+                        Jo cheez maangi, vo milni chahiye thi ya nahi —<br/>
+                        yeh tumhe decide karna tha.<br/>
+                        Maine uss haq ko chheena tumse —<br/>
+                        <em>aur iski maafi koi shayri se nahi hogi.</em>
+                    </blockquote>
+                </div>
+
+                <div class="shayri-card" data-index="4">
+                    <div class="shayri-icon">💙</div>
+                    <blockquote>
+                        Dosti mili tumhari, bahut naseeb waala hoon —<br/>
+                        kash is naseeb ko sambhalna aata mujhe.<br/>
+                        Aage bhi rehna chahta hoon tumhari zindagi mein —<br/>
+                        <em>iss baar sirf tumhare terms par.</em>
+                    </blockquote>
+                </div>
+
+            </div>
+
+            <!-- Dots -->
+            <div class="shayri-dots" id="shayriDots">
+                <span class="dot active" data-i="0"></span>
+                <span class="dot" data-i="1"></span>
+                <span class="dot" data-i="2"></span>
+                <span class="dot" data-i="3"></span>
+                <span class="dot" data-i="4"></span>
+            </div>
+
+            <div class="shayri-nav">
+                <button class="nav-arrow" id="prevShayri">←</button>
+                <button class="nav-arrow" id="nextShayri">→</button>
+            </div>
+
+            <button class="next-btn" id="toPromisesBtn">
+                <span>Ek promise sunoge? 🤝</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- =============================================
+         PAGE 4 — PROMISE JAR
+    ============================================== -->
+    <section id="promisePage" class="page page-promise hidden">
+        <div class="page-inner">
+
+            <h2 class="promise-title serif">Iss baar pakke vaade</h2>
+            <p class="promise-sub">Yeh shayad simple lage — par dil se hain, Sakshi.</p>
+
+            <div class="jar-wrap">
+                <div class="jar" id="jar">
+                    <div class="jar-lid">🪄</div>
+                    <div class="jar-body">
+                        <div class="jar-notes" id="jarNotes">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                </div>
+                <p class="jar-hint">Note par tap karo 🫙</p>
+            </div>
+
+            <div class="promise-detail hidden" id="promiseDetail">
+                <div class="promise-detail-card">
+                    <p id="promiseDetailText"></p>
+                    <button class="close-detail" id="closeDetail">× wapas</button>
+                </div>
+            </div>
+
+            <button class="next-btn" id="toFinalBtn">
+                <span>Aakhri baat... 🌙</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- =============================================
+         PAGE 5 — FINAL MESSAGE
+    ============================================== -->
+    <section id="finalPage" class="page page-final hidden">
+        <div class="page-inner final-inner">
+
+            <div class="final-moon">🌙</div>
+
+            <h2 class="final-title serif">Bas itna hi kehna tha.</h2>
+
+            <div class="final-words">
+                <p id="fw1" class="fw hidden">Maine galti ki.</p>
+                <p id="fw2" class="fw hidden">Tumse maafi maangta hoon — sachchi wali.</p>
+                <p id="fw3" class="fw hidden">Aur agar tumhe thoda waqt chahiye khud ke liye,</p>
+                <p id="fw4" class="fw hidden">toh main yahaan hoon — jab bhi, jitni der baad bhi.</p>
+                <p id="fw5" class="fw hidden fw-special">Tumhari dosti mere liye sab kuch hai. ❤️</p>
+            </div>
+
+            <div class="final-options hidden" id="finalOptions">
+                <p class="final-question">Ab bolo — kya sab theek ho sakta hai?</p>
+                <div class="final-btns">
+                    <button class="yes-final-btn" id="yesFinalBtn">Haan, sab theek hai 💙</button>
+                    <button class="time-btn" id="timeFinalBtn">Thoda waqt chahiye</button>
+                </div>
+            </div>
+
+            <div class="response-msg hidden" id="responseMsg"></div>
+
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
